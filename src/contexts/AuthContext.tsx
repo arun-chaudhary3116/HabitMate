@@ -41,7 +41,7 @@ export const AuthProvider = ({ children }: AuthProviderProps) => {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    fetch("http://localhost:8000/api/v2/users/me", {
+    fetch(`${import.meta.env.VITE_BACKEND_URL}/api/v2/users/me`, {
       credentials: "include",
     })
       .then((res) => {
@@ -67,7 +67,7 @@ export const AuthProvider = ({ children }: AuthProviderProps) => {
   }, []);
 
   const login = async (email: string, password: string) => {
-    const res = await fetch("http://localhost:8000/api/v2/users/login", {
+    const res = await fetch(`${import.meta.env.VITE_BACKEND_URL}/api/v2/users/login`, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       credentials: "include",
@@ -91,7 +91,7 @@ export const AuthProvider = ({ children }: AuthProviderProps) => {
 
   const logout = async () => {
     try {
-      await fetch("http://localhost:8000/api/v2/users/logout", {
+      await fetch(`${import.meta.env.VITE_BACKEND_URL}/api/v2/users/logout`, {
         method: "POST",
         credentials: "include",
       });
