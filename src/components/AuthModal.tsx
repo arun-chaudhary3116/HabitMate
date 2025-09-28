@@ -52,7 +52,7 @@ export default function AuthModal({
       } else {
         // Handle signup
         const response = await fetch(
-          "http://localhost:8000/api/v2/users/register",
+          `${import.meta.env.VITE_BACKEND_URL}/api/v2/users/register`,
           {
             method: "POST",
             headers: { "Content-Type": "application/json" },
