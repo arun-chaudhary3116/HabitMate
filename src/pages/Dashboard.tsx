@@ -74,7 +74,7 @@ const Dashboard = () => {
   const fetchUserHabits = async () => {
     try {
       setLoading(true);
-      const res = await fetch("http://localhost:8000/api/v2/habits", {
+      const res = await fetch(`${import.meta.env.VITE_BACKEND_URL}/api/v2/habits`, {
         credentials: "include",
       });
       if (!res.ok) throw new Error("Failed to fetch habits");
@@ -137,7 +137,7 @@ const Dashboard = () => {
       }
 
       const response = await fetch(
-        `http://localhost:8000/api/v2/habits/${id}/check`,
+        `${import.meta.env.VITE_BACKEND_URL}/api/v2/habits/${id}/check`,
         {
           method: "PATCH",
           headers: { "Content-Type": "application/json" },
@@ -184,7 +184,7 @@ const Dashboard = () => {
     newHabit: Omit<Habit, "id" | "completed" | "streak" | "lastCompleted">
   ) => {
     try {
-      const response = await fetch("http://localhost:8000/api/v2/habits", {
+      const response = await fetch(`${import.meta.env.VITE_BACKEND_URL}/api/v2/habits`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         credentials: "include",
@@ -251,7 +251,7 @@ const Dashboard = () => {
   const handleDeleteHabit = async (id: string) => {
     try {
       const response = await fetch(
-        `http://localhost:8000/api/v2/habits/${id}`,
+        `${import.meta.env.VITE_BACKEND_URL}/api/v2/habits/${id}`,
         {
           method: "DELETE",
           credentials: "include",
