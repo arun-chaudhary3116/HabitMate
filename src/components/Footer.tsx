@@ -39,7 +39,7 @@ const Footer = () => {
 
     try {
       const res = await fetch(
-        "http://localhost:8000/api/v2/newsletter/subscribe",
+        `${import.meta.env.VITE_BACKEND_URL}/api/v2/newsletter/subscribe`,
         {
           method: "POST",
           headers: { "Content-Type": "application/json" },
