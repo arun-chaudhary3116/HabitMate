@@ -25,7 +25,7 @@ const ChatInterface = () => {
     setMessage(""); // clear input immediately
 
     try {
-      const res = await fetch("http://localhost:8000/api/v2/chat/chat", {
+      const res = await fetch(`${import.meta.env.VITE_BACKEND_URL}/api/v2/chat/chat`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         credentials: "include",
@@ -42,7 +42,7 @@ const ChatInterface = () => {
 
         // If AI suggests a habit, create it immediately
         if (data.habitJson) {
-          const habitRes = await fetch("http://localhost:8000/api/v2/habits", {
+          const habitRes = await fetch(`${import.meta.env.VITE_BACKEND_URL}/api/v2/habits`, {
             method: "POST",
             headers: { "Content-Type": "application/json" },
             credentials: "include",
