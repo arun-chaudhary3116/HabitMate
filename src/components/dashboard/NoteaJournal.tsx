@@ -39,7 +39,7 @@ const NotesJournal = () => {
   // Fetch all journal entries
   const fetchEntries = async () => {
     try {
-      const res = await fetch("http://localhost:8000/api/v2/journal", {
+      const res = await fetch(`${import.meta.env.VITE_BACKEND_URL}/api/v2/journal`, {
         credentials: "include",
       });
       if (!res.ok) throw new Error("Failed to fetch journal entries");
@@ -68,7 +68,7 @@ const NotesJournal = () => {
     if (!newEntry.trim()) return;
 
     try {
-      const res = await fetch("http://localhost:8000/api/v2/journal", {
+      const res = await fetch(`${import.meta.env.VITE_BACKEND_URL}/api/v2/journal`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         credentials: "include",
@@ -97,7 +97,7 @@ const NotesJournal = () => {
   // Delete entry
   const deleteEntry = async (id: string) => {
     try {
-      const res = await fetch(`http://localhost:8000/api/v2/journal/${id}`, {
+      const res = await fetch(`${import.meta.env.VITE_BACKEND_URL}/api/v2/journal/${id}`, {
         method: "DELETE",
         credentials: "include",
       });
