@@ -26,7 +26,7 @@ const VerifyEmail = () => {
     const verify = async () => {
       try {
         const res = await fetch(
-          `http://localhost:8000/api/v2/users/verify-email?token=${token}`,
+          `${import.meta.env.VITE_BACKEND_URL}/api/v2/users/verify-email?token=${token}`,
           {
             method: "GET",
             credentials: "include",
