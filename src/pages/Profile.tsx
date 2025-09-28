@@ -44,7 +44,7 @@ const Profile = () => {
       setLoading(true);
       setError(null);
 
-      const response = await fetch("http://localhost:8000/api/v2/users/me", {
+      const response = await fetch(`${import.meta.env.VITE_BACKEND_URL}/api/v2/users/me`, {
         credentials: "include",
       });
 
@@ -84,7 +84,7 @@ const Profile = () => {
 
   const fetchHabitStats = async () => {
     try {
-      const res = await fetch("http://localhost:8000/api/v2/habits", {
+      const res = await fetch(`${import.meta.env.VITE_BACKEND_URL}/api/v2/habits`, {
         credentials: "include",
       });
       if (!res.ok) return;
@@ -124,7 +124,7 @@ const Profile = () => {
   const handleSave = async () => {
     try {
       setSaving(true);
-      const res = await fetch("http://localhost:8000/api/v2/users/profile", {
+      const res = await fetch(`${import.meta.env.VITE_BACKEND_URL}/api/v2/users/profile`, {
         method: "PUT",
         headers: { "Content-Type": "application/json" },
         credentials: "include",
@@ -166,7 +166,7 @@ const Profile = () => {
     const formData = new FormData();
     formData.append("avatar", file);
 
-    fetch("http://localhost:8000/api/v2/users/avatar", {
+    fetch(`${import.meta.env.VITE_BACKEND_URL}/api/v2/users/avatar`, {
       method: "PUT",
       body: formData,
       credentials: "include",
@@ -187,7 +187,7 @@ const Profile = () => {
     try {
       setVerifying(true);
       const res = await fetch(
-        "http://localhost:8000/api/v2/users/send-verification-email",
+        `${import.meta.env.VITE_BACKEND_URL}/api/v2/users/send-verification-email`,
         {
           method: "POST",
           credentials: "include",
