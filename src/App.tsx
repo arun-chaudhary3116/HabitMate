@@ -23,7 +23,7 @@ const App = () => (
           <Toaster />
           <Sonner />
           <BrowserRouter>
-            {/* Chat icon visible on all pages */}
+            {/* ✅ Chat icon visible only for verified users */}
             <ChatIconWrapper />
 
             <Routes>
