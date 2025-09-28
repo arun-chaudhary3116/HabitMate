@@ -427,7 +427,7 @@ const AnimatedForm = memo(function AnimatedForm({
               type="button"
               onClick={() =>
                 (window.location.href =
-                  "http://localhost:8000/api/v2/users/auth/google")
+                  `${import.meta.env.VITE_BACKEND_URL}/api/v2/users/auth/google`)
               }
             >
               <span className="flex items-center justify-center w-full h-full gap-3">
