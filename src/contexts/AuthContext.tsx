@@ -56,7 +56,7 @@ export const AuthProvider = ({ children }: AuthProviderProps) => {
             email: data.user.email,
             avatar: data.user.profilePicture || undefined,
             bio: data.user.bio || "",
-            isVerified: data.user.isEmailVerified ?? false,
+            isVerified: data.user.isEmailVerified ?? false, // ✅ key for chat visibility
           });
         } else {
           setUser(null);
@@ -82,12 +82,18 @@ export const AuthProvider = ({ children }: AuthProviderProps) => {
         email: data.data.user.email,
         avatar: data.data.user.profilePicture || undefined,
         bio: data.data.user.bio || "",
-        isVerified: data.data.user.isEmailVerified ?? false,
+        isVerified: data.data.user.isEmailVerified ?? false, // ✅ key
       });
     }
   };
 
-  const loginWithOAuth = (userData: User) => setUser(userData);
+  const loginWithOAuth = (userData: User) => {
+    // Only mark as verified if backend confirms email verified
+    setUser({
+      ...userData,
+      isVerified: userData.isVerified ?? false,
+    });
+  };
 
   const logout = async () => {
     try {
