@@ -96,15 +96,20 @@ export const AuthProvider = ({ children }: AuthProviderProps) => {
   };
 
   const logout = async () => {
-    try {
-      await fetch(`${import.meta.env.VITE_BACKEND_URL}/api/v2/users/logout`, {
-        method: "POST",
-        credentials: "include",
-      });
-    } finally {
-      setUser(null);
-    }
-  };
+  try {
+    await fetch(`${import.meta.env.VITE_BACKEND_URL}/api/v2/users/logout`, {
+      method: "POST",
+      credentials: "include",
+    });
+  } catch (err) {
+    console.error("Logout error:", err);
+  } finally {
+    // Clear local storage and user state
+    localStorage.removeItem("user");
+    setUser(null);
+  }
+};
+
 
   return (
     <AuthContext.Provider
