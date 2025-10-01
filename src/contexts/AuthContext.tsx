@@ -99,16 +99,19 @@ export const AuthProvider = ({ children }: AuthProviderProps) => {
   try {
     await fetch(`${import.meta.env.VITE_BACKEND_URL}/api/v2/users/logout`, {
       method: "POST",
-      credentials: "include",
+      credentials: "include", // ✅ required for cookies
     });
   } catch (err) {
     console.error("Logout error:", err);
   } finally {
-    // Clear local storage and user state
     localStorage.removeItem("user");
     setUser(null);
+
+    // 🔄 Optional: force reload to ensure cookies cleared and state reset
+    window.location.href = "/";
   }
 };
+
 
 
   return (
