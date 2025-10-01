@@ -104,7 +104,7 @@ export const AuthProvider = ({ children }: AuthProviderProps) => {
   } catch (err) {
     console.error("Logout error:", err);
   } finally {
-    localStorage.removeItem("user");
+    
     setUser(null);
 
     // 🔄 Optional: force reload to ensure cookies cleared and state reset
