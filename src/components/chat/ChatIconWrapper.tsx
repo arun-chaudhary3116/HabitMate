@@ -1,5 +1,5 @@
 import { useAuth } from "@/contexts/AuthContext";
-import ChatIconComponent from "./ChatIconComponent";
+import ChatIconComponent from "./ChatIcon";
 
 const ChatIconWrapper = () => {
   const { user, loading } = useAuth();
